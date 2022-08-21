@@ -29,15 +29,18 @@ describe('Login component tests', () => {
 
     expect(button).toBeDisabled();
 
-    // userEvent.type(input, 'a');
-    // expect(button).toBeDisabled();
+    userEvent.type(input, 'a');
+    expect(button).toBeDisabled();
 
-    // userEvent.type(input, 'ab');
-    // expect(button).toBeDisabled();
+    userEvent.clear(input);
+    userEvent.type(input, 'ab');
+    expect(button).toBeDisabled();
 
-    // userEvent.type(input, 'abc');
-    // expect(button).not.toBeDisabled();
+    userEvent.clear(input);
+    userEvent.type(input, 'abc');
+    expect(button).not.toBeDisabled();
 
+    userEvent.clear(input);
     userEvent.type(input, 'Douglas');
     expect(button).not.toBeDisabled();
   });
