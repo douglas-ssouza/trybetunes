@@ -1,0 +1,57 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import App from '../App';
+
+describe('Login component tests', () => {
+  it('has an input field to type name', () => {
+    render(<App />);
+
+    const input = screen.getByPlaceholderText('Digite seu nome');
+
+    expect(input).toBeInTheDocument();
+  });
+
+  it('has a button "Entrar"', () => {
+    render(<App />);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('Entrar');
+  });
+
+  it('button should be disabled if input has less than 3 characters', () => {
+    render(<App />);
+
+    const input = screen.getByPlaceholderText('Digite seu nome');
+    const button = screen.getByRole('button');
+
+    expect(button).toBeDisabled();
+
+    userEvent.type(input, 'a');
+    expect(button).toBeDisabled();
+
+    userEvent.type(input, 'ab');
+    expect(button).toBeDisabled();
+
+    userEvent.type(input, 'abc');
+    expect(button).not.toBeDisabled();
+
+    userEvent.type(input, 'Douglas');
+    expect(button).not.toBeDisabled();
+  });
+
+  it('redirects to "/user/search" after button is clicked', () => {
+    render(<App />);
+
+    const input = screen.getByPlaceholderText('Digite seu nome');
+    const button = screen.getByRole('button');
+
+    userEvent.type(input, 'Douglas');
+    userEvent.click(button);
+
+    expect(input).not.toBeInTheDocument();
+    expect(button).not.toBeInTheDocument();
+  });
+});
