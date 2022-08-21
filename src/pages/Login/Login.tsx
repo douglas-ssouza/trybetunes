@@ -28,6 +28,7 @@ function Login() {
               value={name}
               onChange={(e) => setValue(e.target.value)}
               fullWidth
+              size="medium"
             />
           </Grid>
           <Grid item xs={12}>
@@ -36,6 +37,7 @@ function Login() {
               disabled={name.length < 3}
               onClick={() => { navigate('user/search'); }}
               fullWidth
+              size="large"
             >
               Entrar
             </Button>
