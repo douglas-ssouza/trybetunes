@@ -7,7 +7,7 @@ describe('Login component tests', () => {
   it('has an input field to type name', () => {
     render(<App />);
 
-    const input = screen.getByPlaceholderText('Digite seu nome');
+    const input = screen.getByRole('textbox', { name: /digite seu nome/i });
 
     expect(input).toBeInTheDocument();
   });

@@ -1,8 +1,13 @@
 import React from 'react';
 
+import { Container, TextField, Button } from '@mui/material';
+
 function Login() {
   return (
-    <h1>Login</h1>
+    <Container>
+      <TextField label="Digite seu nome" />
+      <Button variant="contained">Entrar</Button>
+    </Container>
   );
 }
 
