@@ -7,19 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
+import LoginContainer from './customComponents';
+
 function Login() {
   const [name, setValue] = useState('');
 
   const navigate = useNavigate();
 
   return (
-    <Container sx={{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -75%)',
-    }}
-    >
+    <LoginContainer>
       <Typography component="h1" variant="h3" align="center">
         Trybetunes
       </Typography>
@@ -46,7 +42,7 @@ function Login() {
           </Grid>
         </Grid>
       </Container>
-    </Container>
+    </LoginContainer>
   );
 }
 
