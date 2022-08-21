@@ -17,11 +17,12 @@ function Router() {
       <Routes>
         <Route path="" element={<Login />} />
         <Route path="user" element={<User />}>
+          <Route index element={<Search />} />
           <Route path="search" element={<Search />} />
           <Route path="album/:id" element={<Album />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="profile" element={<Profiles />}>
-            <Route path="" element={<Profile />} />
+            <Route index element={<Profile />} />
             <Route path="edit" element={<ProfileEdit />} />
           </Route>
         </Route>
