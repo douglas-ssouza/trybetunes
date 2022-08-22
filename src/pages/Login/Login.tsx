@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import LoginContainer from './customComponents';
+import { LoginContainer, LoginFormContainer } from './customComponents';
 
 function Login() {
   const [name, setValue] = useState('');
@@ -19,7 +18,7 @@ function Login() {
       <Typography component="h1" variant="h3" align="center">
         Trybetunes
       </Typography>
-      <Container sx={{ marginTop: '50px', width: '70%' }}>
+      <LoginFormContainer>
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <TextField
@@ -43,7 +42,7 @@ function Login() {
             </Button>
           </Grid>
         </Grid>
-      </Container>
+      </LoginFormContainer>
     </LoginContainer>
   );
 }
