@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import TextField from '@mui/material/TextField';
@@ -8,10 +8,19 @@ import Grid from '@mui/material/Grid';
 
 import { LoginContainer, LoginFormContainer } from './customComponents';
 
+import Context from '../../context';
+
 function Login() {
   const [name, setValue] = useState('');
 
+  const { user, setUser } = useContext(Context);
+
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    setUser({ ...user, name });
+    navigate('user/search');
+  };
 
   return (
     <LoginContainer>
@@ -34,7 +43,7 @@ function Login() {
             <Button
               variant="contained"
               disabled={name.length < 3}
-              onClick={() => { navigate('user/search'); }}
+              onClick={handleClick}
               fullWidth
               size="large"
             >
