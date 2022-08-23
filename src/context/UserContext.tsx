@@ -16,15 +16,18 @@ type UserContextProps = {
   children: React.ReactNode;
 }
 
-export const UserContext = React.createContext<IUserContext | null>(null);
+const contextInitialValue = {
+  user: {
+    name: '', email: '', description: '', image: '',
+  },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setUser: () => {},
+};
+
+export const UserContext = React.createContext<IUserContext>(contextInitialValue);
 
 export function Provider({ children }: UserContextProps) {
-  const [user, setUser] = React.useState({
-    name: '',
-    email: '',
-    description: '',
-    image: '',
-  });
+  const [user, setUser] = React.useState(contextInitialValue.user);
 
   const contextValue = React.useMemo(() => ({ user, setUser }), [user]);
 
