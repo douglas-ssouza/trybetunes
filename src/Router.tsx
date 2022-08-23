@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import User from './pages/User';
@@ -13,22 +13,20 @@ import NotFound from './pages/NotFound';
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="" element={<Login />} />
-        <Route path="user" element={<User />}>
-          <Route index element={<Search />} />
-          <Route path="search" element={<Search />} />
-          <Route path="album/:id" element={<Album />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="profile" element={<Profiles />}>
-            <Route index element={<Profile />} />
-            <Route path="edit" element={<ProfileEdit />} />
-          </Route>
+    <Routes>
+      <Route path="" element={<Login />} />
+      <Route path="user" element={<User />}>
+        <Route index element={<Search />} />
+        <Route path="search" element={<Search />} />
+        <Route path="album/:id" element={<Album />} />
+        <Route path="favorites" element={<Favorites />} />
+        <Route path="profile" element={<Profiles />}>
+          <Route index element={<Profile />} />
+          <Route path="edit" element={<ProfileEdit />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
