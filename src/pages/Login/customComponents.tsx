@@ -9,7 +9,7 @@ export const LoginContainer = styled(Container)({
   transform: 'translate(-50%, -75%)',
 });
 
-export const LoginFormContainer = styled(Container)(({ theme }) => ({
+export const FormContainer = styled(Container)(({ theme }) => ({
   marginTop: '50px',
   [theme.breakpoints.up('sm')]: {
     width: '80%',

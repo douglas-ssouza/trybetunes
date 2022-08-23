@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { LoginContainer, LoginFormContainer } from './customComponents';
+import { LoginContainer, FormContainer } from './customComponents';
 
 import { UserContext } from '../../context/UserContext';
 
@@ -27,7 +27,7 @@ function Login() {
       <Typography component="h1" variant="h3" align="center">
         Trybetunes
       </Typography>
-      <LoginFormContainer>
+      <FormContainer>
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <TextField
@@ -51,7 +51,7 @@ function Login() {
             </Button>
           </Grid>
         </Grid>
-      </LoginFormContainer>
+      </FormContainer>
     </LoginContainer>
   );
 }
