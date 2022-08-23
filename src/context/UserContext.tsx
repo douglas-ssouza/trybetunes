@@ -1,27 +1,21 @@
 import React from 'react';
 
-interface User {
-  name: string;
-  email: string;
-  description: string;
-  image: string;
-}
+import { IUserContext } from '../interfaces/User';
 
-interface IUserContext {
-  user: User;
-  setUser: (newUser: User) => void;
-}
-
-type UserContextProps = {
+interface UserContextProps {
   children: React.ReactNode;
 }
 
 const contextInitialValue = {
   user: {
-    name: '', email: '', description: '', image: '',
+    name: '',
+    email: '',
+    description: '',
+    image: '',
   },
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setUser: () => {},
+  setUser: () => {
+    // do nothing
+  },
 };
 
 export const UserContext = React.createContext<IUserContext>(contextInitialValue);
