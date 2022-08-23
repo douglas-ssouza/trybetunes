@@ -8,12 +8,12 @@ import Grid from '@mui/material/Grid';
 
 import { LoginContainer, LoginFormContainer } from './customComponents';
 
-import Context from '../../context';
+import { UserContext } from '../../context/UserContext';
 
 function Login() {
   const [name, setValue] = useState('');
 
-  const { user, setUser } = useContext(Context);
+  const { user, setUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
