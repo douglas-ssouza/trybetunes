@@ -1,6 +1,12 @@
 import React, { useContext } from 'react';
 
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { useTheme } from '@emotion/react';
+
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+
+import { StyledTabs, StyledTab } from './headerComponents';
 
 import ElevationScroll from './helpers/ElevationScroll';
 
@@ -17,6 +23,11 @@ function Header() {
             <Typography component="h2" variant="h4">
               {user.name}
             </Typography>
+            <StyledTabs>
+              <StyledTab label="Search" />
+              <StyledTab label="Favorites" />
+              <StyledTab label="Profile" />
+            </StyledTabs>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
