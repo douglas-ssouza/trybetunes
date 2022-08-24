@@ -62,7 +62,7 @@ describe('Header component tests', () => {
 
   it('should be rendered in invalid routes', () => {
     render(
-      <MemoryRouter initialEntries={['/notfound']}>
+      <MemoryRouter initialEntries={['/user/notfound']}>
         <App />
       </MemoryRouter>,
     );
