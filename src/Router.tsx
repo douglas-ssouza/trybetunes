@@ -24,8 +24,8 @@ function Router() {
           <Route index element={<Profile />} />
           <Route path="edit" element={<ProfileEdit />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
