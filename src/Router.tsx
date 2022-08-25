@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Login from './pages/Login';
+import Login from './pages/login';
 import User from './pages/User';
-import Search from './pages/Search';
-import Album from './pages/Album';
-import Favorites from './pages/Favorites';
+import Search from './pages/search';
+import Album from './pages/album';
+import Favorites from './pages/favorites';
 import Profiles from './pages/Profiles';
-import Profile from './pages/Profile';
-import ProfileEdit from './pages/ProfileEdit';
+import Profile from './pages/profile';
+import ProfileEdit from './pages/profileEdit';
 import NotFound from './pages/NotFound';
 
 function Router() {
