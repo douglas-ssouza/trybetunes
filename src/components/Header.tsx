@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-
-import { useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,9 +23,9 @@ function Header() {
               {user.name}
             </Typography>
             <StyledTabs>
-              <StyledTab label="Search" />
-              <StyledTab label="Favorites" />
-              <StyledTab label="Profile" />
+              <StyledTab label="Search" component={Link} to="/user/search" />
+              <StyledTab label="Favorites" component={Link} to="/user/favorites" />
+              <StyledTab label="Profile" component={Link} to="/user/profile" />
             </StyledTabs>
           </Toolbar>
         </AppBar>

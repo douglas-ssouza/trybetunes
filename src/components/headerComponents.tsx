@@ -22,4 +22,4 @@ export const StyledTab = styled(Tab)(({ theme }) => ({
     opacity: 1,
     backgroundColor: theme.palette.primary.light,
   },
-}));
+})) as typeof Tab;
