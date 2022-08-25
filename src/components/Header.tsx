@@ -23,9 +23,9 @@ function Header() {
               {user.name}
             </Typography>
             <StyledTabs>
-              <StyledTab label="Search" component={Link} to="/user/search" />
-              <StyledTab label="Favorites" component={Link} to="/user/favorites" />
-              <StyledTab label="Profile" component={Link} to="/user/profile" />
+              <StyledTab label="Search" component={Link} to="/search" />
+              <StyledTab label="Favorites" component={Link} to="/favorites" />
+              <StyledTab label="Profile" component={Link} to="/profile" />
             </StyledTabs>
           </Toolbar>
         </AppBar>

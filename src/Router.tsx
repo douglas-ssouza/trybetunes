@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Login from './pages/login';
 import User from './pages/User';
@@ -11,7 +11,21 @@ import Profile from './pages/profile';
 import ProfileEdit from './pages/profileEdit';
 import NotFound from './pages/NotFound';
 
+import { UserContext } from './context/UserContext';
+
 function Router() {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const navigateToLogin = () => {
+      if (!user.name) {
+        navigate('/login');
+      }
+    };
+    navigateToLogin();
+  }, [user]);
+
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
