@@ -14,8 +14,8 @@ import NotFound from './pages/NotFound';
 function Router() {
   return (
     <Routes>
-      <Route path="" element={<Login />} />
-      <Route path="user" element={<User />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="" element={<User />}>
         <Route index element={<Search />} />
         <Route path="search" element={<Search />} />
         <Route path="album/:id" element={<Album />} />

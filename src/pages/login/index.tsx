@@ -19,7 +19,7 @@ function Login() {
 
   const handleClick = () => {
     setUser({ ...user, name });
-    navigate('user/search');
+    navigate('search');
   };
 
   return (
