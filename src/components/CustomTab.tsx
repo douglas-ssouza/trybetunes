@@ -1,8 +1,14 @@
 import { styled } from '@mui/material/styles';
-
 import Tab from '@mui/material/Tab';
+import { Link } from 'react-router-dom';
 
-const StyledTab = styled(Tab)(({ theme }) => ({
+type TabProps = {
+  selected?: boolean,
+  component?: typeof Link,
+  to?: string,
+};
+
+const CustomTab = styled(Tab)<TabProps>(({ theme }) => ({
   color: 'white',
   fontWeight: 600,
   margin: '0 50px',
@@ -13,10 +19,6 @@ const StyledTab = styled(Tab)(({ theme }) => ({
     opacity: 1,
     backgroundColor: theme.palette.primary.light,
   },
-  '&:selected': {
-    opacity: 1,
-    backgroundColor: theme.palette.primary.light,
-  },
-})) as typeof Tab;
+}));
 
-export default StyledTab;
+export default CustomTab;

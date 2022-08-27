@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import StyledTab from './headerComponents';
+import CustomTab from './CustomTab';
 
 import ElevationScroll from './helpers/ElevationScroll';
 
@@ -23,7 +23,6 @@ function Header() {
   const theme = useTheme();
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    console.log(newValue);
     setTabValue(newValue);
   };
 
@@ -41,10 +40,25 @@ function Header() {
             <Typography component="h2" variant="h4" color={theme.palette.common.white}>
               {user.name}
             </Typography>
-            <Tabs onChange={handleTabChange} sx={{ margin: 'auto' }}>
-              <StyledTab label="Search" component={Link} to="/search" />
-              <StyledTab label="Favorites" component={Link} to="/favorites" />
-              <StyledTab label="Profile" component={Link} to="/profile" />
+            <Tabs value={tabValue} onChange={handleTabChange} sx={{ margin: 'auto' }}>
+              <CustomTab
+                label="Search"
+                selected={tabValue === 0}
+                component={Link}
+                to="/search"
+              />
+              <CustomTab
+                label="Favorites"
+                component={Link}
+                to="/favorites"
+                selected={tabValue === 1}
+              />
+              <CustomTab
+                label="Profile"
+                component={Link}
+                to="/profile"
+                selected={tabValue === 2}
+              />
             </Tabs>
             <IconButton component="button" disableRipple onClick={handleLogout}>
               <LogoutIcon fontSize="large" />
