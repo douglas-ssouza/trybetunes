@@ -1,14 +1,14 @@
 import { styled } from '@mui/material/styles';
-import Tab from '@mui/material/Tab';
+import Tab, { TabProps } from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
 
-type TabProps = {
-  selected?: boolean,
-  component?: typeof Link,
-  to?: string,
-};
+interface IProps extends TabProps {
+  selected?: boolean;
+  component?: typeof Link;
+  to?: string;
+}
 
-const CustomTab = styled(Tab)<TabProps>(({ theme }) => ({
+const CustomTab = styled(Tab)<IProps>(({ theme }) => ({
   color: 'white',
   fontWeight: 600,
   margin: '0 50px',
