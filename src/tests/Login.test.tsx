@@ -1,11 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
+
 import App from '../App';
 
 describe('Login component tests', () => {
   it('has an input field to type name', () => {
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     const input = screen.getByRole('textbox', { name: /digite seu nome/i });
 
@@ -13,7 +19,11 @@ describe('Login component tests', () => {
   });
 
   it('has a button "Entrar"', () => {
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     const button = screen.getByRole('button');
 
@@ -22,7 +32,11 @@ describe('Login component tests', () => {
   });
 
   it('button should be disabled if input has less than 3 characters', () => {
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     const input = screen.getByRole('textbox', { name: /digite seu nome/i });
     const button = screen.getByRole('button');
@@ -46,7 +60,11 @@ describe('Login component tests', () => {
   });
 
   it('redirects to "/user/search" after button is clicked', () => {
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     const input = screen.getByRole('textbox', { name: /digite seu nome/i });
     const button = screen.getByRole('button');
