@@ -35,7 +35,7 @@ function Header() {
   return (
     <>
       <ElevationScroll>
-        <AppBar data-testid="page-header">
+        <AppBar>
           <Toolbar>
             <Typography component="h2" variant="h4" color={theme.palette.common.white}>
               {user.name}

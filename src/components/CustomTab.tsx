@@ -11,7 +11,7 @@ interface IProps extends TabProps {
 const CustomTab = styled(Tab)<IProps>(({ theme }) => ({
   color: 'white',
   fontWeight: 600,
-  margin: '0 50px',
+  marginRight: '50px',
   minWidth: '100px',
   borderRadius: '7px',
   opacity: 0.7,
