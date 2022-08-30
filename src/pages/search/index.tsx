@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 import searchAlbums from '../../api/searchAlbums';
 
@@ -60,11 +61,24 @@ function Search() {
       </Grid>
       <Grid>
         {
-          albums?.length && (
-            albums.map((album) => (
-              <h2>{album.collectionName}</h2>
-            ))
-          )
+          albums && albums.length
+            ? (
+              albums.map((album) => (
+                <Typography component="h3" variant="h6">
+                  { album.collectionName }
+                </Typography>
+              ))
+            )
+            : null
+        }
+        {
+          albums && !albums.length
+            ? (
+              <Typography component="h3" variant="h6">
+                Nenhum álbum encontrado
+              </Typography>
+            )
+            : null
         }
       </Grid>
     </Grid>
