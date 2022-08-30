@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import AlbumCard from './AlbumCard';
+
 import searchAlbums from '../../api/searchAlbums';
 
 import SearchResults from '../../interfaces/SearchResults';
@@ -64,9 +66,17 @@ function Search() {
           albums && albums.length
             ? (
               albums.map((album) => (
-                <Typography component="h3" variant="h6">
-                  { album.collectionName }
-                </Typography>
+                <AlbumCard
+                  key={album.collectionId}
+                  artworkUrl100={album.artworkUrl100}
+                  collectionName={album.collectionName}
+                  collectionId={album.collectionId}
+                  collectionPrice={album.collectionPrice}
+                  artistId={album.artistId}
+                  artistName={album.artistName}
+                  releaseDate={album.releaseDate}
+                  trackCount={album.trackCount}
+                />
               ))
             )
             : null
