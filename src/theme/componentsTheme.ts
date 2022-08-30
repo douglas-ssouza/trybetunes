@@ -9,7 +9,6 @@ const componentsTheme = createTheme(paletteTheme, {
         root: {
           '&.Mui-selected': {
             opacity: 1,
-            backgroundColor: paletteTheme.palette.primary.light,
             color: 'white',
           },
         },

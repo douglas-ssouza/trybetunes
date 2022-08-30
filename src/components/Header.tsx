@@ -64,7 +64,12 @@ function Header() {
                 )
                 : (
                   <>
-                    <Tabs value={tabValue} onChange={handleTabChange} sx={{ margin: 'auto' }}>
+                    <Tabs
+                      value={tabValue}
+                      onChange={handleTabChange}
+                      sx={{ margin: 'auto' }}
+                      indicatorColor="secondary"
+                    >
                       <CustomTab
                         label="Search"
                         selected={tabValue === 0}
