@@ -6,9 +6,12 @@ import Button from '@mui/material/Button';
 
 import searchAlbums from '../../api/searchAlbums';
 
+import SearchResults from '../../interfaces/SearchResults';
+
 function Search() {
   const [search, setSearch] = useState('');
   const [isLoading, setLoading] = useState(false);
+  const [albums, setAlbums] = useState<null | SearchResults[]>(null);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(target.value);
@@ -16,8 +19,8 @@ function Search() {
 
   const handleClick = async () => {
     setLoading(true);
-    const albums = await searchAlbums(search);
-    console.log(albums);
+    const results = await searchAlbums(search);
+    setAlbums(results);
     setLoading(false);
   };
 
@@ -26,22 +29,43 @@ function Search() {
   }
 
   return (
-    <Grid container justifyContent="center" alignItems="center" sx={{ mt: 4 }} spacing={4}>
-      <Grid item>
-        <TextField
-          onChange={handleChange}
-          placeholder="Digite o artista ou banda"
-        />
+    <Grid
+      container
+      direction="column"
+      sx={{ mt: 4 }}
+    >
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        spacing={4}
+      >
+        <Grid item>
+          <TextField
+            onChange={handleChange}
+            placeholder="Digite o artista ou banda"
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            size="large"
+            variant="contained"
+            disabled={search.length < 2}
+            onClick={handleClick}
+          >
+            Buscar
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item>
-        <Button
-          size="large"
-          variant="contained"
-          disabled={search.length < 2}
-          onClick={handleClick}
-        >
-          Buscar
-        </Button>
+      <Grid>
+        {
+          albums?.length && (
+            albums.map((album) => (
+              <h2>{album.collectionName}</h2>
+            ))
+          )
+        }
       </Grid>
     </Grid>
   );
