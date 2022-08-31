@@ -63,7 +63,7 @@ function Search() {
             </Button>
           </Grid>
         </Grid>
-        <Grid item container justifyContent="center" spacing={2} sx={{ mt: 2 }}>
+        <Grid item container justifyContent="center" spacing={4} sx={{ mt: 2 }}>
           {
             albums && albums.length
               ? (
