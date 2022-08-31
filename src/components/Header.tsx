@@ -17,7 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
-import CustomTab from './CustomTab';
+import CustomTab from './styled-components/CustomTab';
 
 import ElevationScroll from './helpers/ElevationScroll';
 
