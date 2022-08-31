@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useTheme } from '@mui/material/styles';
@@ -28,6 +28,25 @@ function Header() {
 
   const theme = useTheme();
   const isScreenSmall = useMediaQuery(theme.breakpoints.down('md'));
+
+  useEffect(() => {
+    const { pathname } = window.location;
+
+    switch (pathname) {
+      case '/search':
+        setTabValue(0);
+        break;
+      case '/favorites':
+        setTabValue(1);
+        break;
+      case '/profile':
+        setTabValue(2);
+        break;
+      default:
+        setTabValue(0);
+        break;
+    }
+  }, [tabValue]);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);

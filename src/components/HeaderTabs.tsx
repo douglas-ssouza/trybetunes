@@ -34,6 +34,7 @@ function HeaderTabs({ tabValue, handleTabChange, handleLogout }: IProps) {
         {
           tabs.map(({ label, link }, index) => (
             <CustomTab
+              key={`${label}-tab`}
               label={label}
               selected={tabValue === index}
               component={Link}
