@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IUserContext } from '../interfaces/User';
+import IContext from '../interfaces/IContext';
 
 export const contextInitialValue = {
   user: {
@@ -18,4 +18,4 @@ export const contextInitialValue = {
   },
 };
 
-export const UserContext = React.createContext<IUserContext>(contextInitialValue);
+export const UserContext = React.createContext<IContext>(contextInitialValue);
