@@ -2,6 +2,7 @@ import React from 'react';
 
 import { UserContext, contextInitialValue } from './UserContext';
 
+import User from '../interfaces/User';
 import SearchResults from '../interfaces/SearchResults';
 
 interface UserContextProps {
@@ -9,8 +10,8 @@ interface UserContextProps {
 }
 
 function Provider({ children }: UserContextProps) {
-  const [user, setUser] = React.useState(contextInitialValue.user);
-  const [albums, setAlbums] = React.useState<null | SearchResults[]>(null);
+  const [user, setUser] = React.useState<User>(contextInitialValue.user);
+  const [albums, setAlbums] = React.useState<null | SearchResults[]>(contextInitialValue.albums);
 
   const contextValue = React.useMemo(() => ({
     user,
