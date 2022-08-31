@@ -16,6 +16,12 @@ interface IProps {
 }
 
 function HeaderTabs({ tabValue, handleTabChange, handleLogout }: IProps) {
+  const tabs = [
+    { label: 'Search', link: '/search' },
+    { label: 'Favorites', link: '/favorites' },
+    { label: 'Profile', link: '/profile' },
+  ];
+
   return (
     <>
       <Tabs
@@ -25,24 +31,16 @@ function HeaderTabs({ tabValue, handleTabChange, handleLogout }: IProps) {
         indicatorColor="secondary"
         TabIndicatorProps={{ style: { display: 'none' } }}
       >
-        <CustomTab
-          label="Search"
-          selected={tabValue === 0}
-          component={Link}
-          to="/search"
-        />
-        <CustomTab
-          label="Favorites"
-          component={Link}
-          to="/favorites"
-          selected={tabValue === 1}
-        />
-        <CustomTab
-          label="Profile"
-          component={Link}
-          to="/profile"
-          selected={tabValue === 2}
-        />
+        {
+          tabs.map(({ label, link }, index) => (
+            <CustomTab
+              label={label}
+              selected={tabValue === index}
+              component={Link}
+              to={link}
+            />
+          ))
+        }
       </Tabs>
       <IconButton disableRipple onClick={handleLogout}>
         <LogoutIcon fontSize="large" />
