@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 
 import AlbumInfo from './AlbumInfo';
-import AlbumTracks from './AlbumTracks';
+import AlbumTrack from './AlbumTrack';
 
 import getMusics from '../../api/getMusics';
 
@@ -35,10 +35,10 @@ function Album() {
       <Grid item xs={4}>
         <AlbumInfo collection={album.collection} />
       </Grid>
-      <Grid item>
+      <Grid item xs={8}>
         {
           album.songs?.map((song) => (
-            <p>{song.trackName}</p>
+            <AlbumTrack key={song.trackId} track={song} />
           ))
         }
       </Grid>
