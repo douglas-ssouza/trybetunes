@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { LoginContainer, FormContainer } from './styled';
+import LoginContainer from './styled-components/LogincContainer';
+import FormContainer from './styled-components/FormContainer';
 
 import { UserContext } from '../../context/UserContext';
 
