@@ -36,6 +36,7 @@ function Header() {
   };
 
   const handleLogout = () => {
+    sessionStorage.clear();
     setUser({
       name: '', email: '', description: '', image: '',
     });

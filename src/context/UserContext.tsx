@@ -4,7 +4,7 @@ import IContext from '../interfaces/IContext';
 
 export const contextInitialValue = {
   user: {
-    name: '',
+    name: sessionStorage.getItem('name') || '',
     email: '',
     description: '',
     image: '',
