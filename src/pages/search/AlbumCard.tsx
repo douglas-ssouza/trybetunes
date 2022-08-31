@@ -30,10 +30,7 @@ function AlbumCard(props: SearchResults) {
       to={`/album/${collectionId}`}
       sx={{ textDecoration: 'none' }}
     >
-      <Paper
-        elevation={6}
-        sx={{ p: 3 }}
-      >
+      <Paper elevation={6} sx={{ p: 3 }}>
         <Grid
           container
           direction="column"

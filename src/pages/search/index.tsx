@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -6,16 +6,17 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { UserContext } from '../../context/UserContext';
+
 import AlbumCard from './AlbumCard';
 
 import searchAlbums from '../../api/searchAlbums';
 
-import SearchResults from '../../interfaces/SearchResults';
-
 function Search() {
   const [search, setSearch] = useState('');
   const [isLoading, setLoading] = useState(false);
-  const [albums, setAlbums] = useState<null | SearchResults[]>(null);
+
+  const { albums, setAlbums } = useContext(UserContext);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(target.value);

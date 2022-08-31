@@ -9,7 +9,11 @@ export const contextInitialValue = {
     description: '',
     image: '',
   },
+  albums: [],
   setUser: () => {
+    // do nothing
+  },
+  setAlbums: () => {
     // do nothing
   },
 };
