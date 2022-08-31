@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { UserContext } from '../../context/UserContext';
@@ -11,6 +9,7 @@ import { UserContext } from '../../context/UserContext';
 import AlbumCard from './AlbumCard';
 
 import searchAlbums from '../../api/searchAlbums';
+import SearchForm from './SearchForm';
 
 function Search() {
   const [search, setSearch] = useState('');
@@ -35,35 +34,12 @@ function Search() {
 
   return (
     <Container>
-      <Grid
-        container
-        direction="column"
-        sx={{ mt: 4 }}
-      >
-        <Grid
-          item
-          container
-          justifyContent="center"
-          alignItems="center"
-          spacing={4}
-        >
-          <Grid item>
-            <TextField
-              onChange={handleChange}
-              placeholder="Digite o artista ou banda"
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              size="large"
-              variant="contained"
-              disabled={search.length < 2}
-              onClick={handleClick}
-            >
-              Buscar
-            </Button>
-          </Grid>
-        </Grid>
+      <Grid container direction="column" sx={{ mt: 4 }}>
+        <SearchForm
+          search={search}
+          handleChange={handleChange}
+          handleClick={handleClick}
+        />
         <Grid item container justifyContent="center" spacing={4} sx={{ mt: 2 }}>
           {
             albums && albums.length
