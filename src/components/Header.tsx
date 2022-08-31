@@ -70,6 +70,7 @@ function Header() {
                       onChange={handleTabChange}
                       sx={{ margin: 'auto' }}
                       indicatorColor="secondary"
+                      TabIndicatorProps={{ style: { display: 'none' } }}
                     >
                       <CustomTab
                         label="Search"
