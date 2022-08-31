@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -32,66 +33,70 @@ function Search() {
   }
 
   return (
-    <Grid
-      container
-      direction="column"
-      sx={{ mt: 4 }}
-    >
+    <Container>
       <Grid
-        item
         container
-        justifyContent="center"
-        alignItems="center"
-        spacing={4}
+        direction="column"
+        sx={{ mt: 4 }}
       >
-        <Grid item>
-          <TextField
-            onChange={handleChange}
-            placeholder="Digite o artista ou banda"
-          />
+        <Grid
+          item
+          container
+          justifyContent="center"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid item>
+            <TextField
+              onChange={handleChange}
+              placeholder="Digite o artista ou banda"
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              size="large"
+              variant="contained"
+              disabled={search.length < 2}
+              onClick={handleClick}
+            >
+              Buscar
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Button
-            size="large"
-            variant="contained"
-            disabled={search.length < 2}
-            onClick={handleClick}
-          >
-            Buscar
-          </Button>
+        <Grid item container justifyContent="center" spacing={2} sx={{ mt: 2 }}>
+          {
+            albums && albums.length
+              ? (
+                albums.map((album) => (
+                  <AlbumCard
+                    key={album.collectionId}
+                    artworkUrl100={album.artworkUrl100}
+                    collectionName={album.collectionName}
+                    collectionId={album.collectionId}
+                    collectionPrice={album.collectionPrice}
+                    artistId={album.artistId}
+                    artistName={album.artistName}
+                    releaseDate={album.releaseDate}
+                    trackCount={album.trackCount}
+                  />
+                ))
+              )
+              : null
+          }
+          {
+            albums && !albums.length
+              ? (
+                <Grid item>
+                  <Typography component="h3" variant="h4">
+                    Nenhum álbum encontrado
+                  </Typography>
+                </Grid>
+              )
+              : null
+          }
         </Grid>
       </Grid>
-      <Grid>
-        {
-          albums && albums.length
-            ? (
-              albums.map((album) => (
-                <AlbumCard
-                  key={album.collectionId}
-                  artworkUrl100={album.artworkUrl100}
-                  collectionName={album.collectionName}
-                  collectionId={album.collectionId}
-                  collectionPrice={album.collectionPrice}
-                  artistId={album.artistId}
-                  artistName={album.artistName}
-                  releaseDate={album.releaseDate}
-                  trackCount={album.trackCount}
-                />
-              ))
-            )
-            : null
-        }
-        {
-          albums && !albums.length
-            ? (
-              <Typography component="h3" variant="h6">
-                Nenhum álbum encontrado
-              </Typography>
-            )
-            : null
-        }
-      </Grid>
-    </Grid>
+    </Container>
   );
 }
 
