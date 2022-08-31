@@ -7,17 +7,15 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
-import CustomTab from './styled-components/CustomTab';
+import HeaderTabs from './HeaderTabs';
 
 import ElevationScroll from './helpers/ElevationScroll';
 
@@ -64,37 +62,11 @@ function Header() {
                   </IconButton>
                 )
                 : (
-                  <>
-                    <Tabs
-                      value={tabValue}
-                      onChange={handleTabChange}
-                      sx={{ margin: 'auto' }}
-                      indicatorColor="secondary"
-                      TabIndicatorProps={{ style: { display: 'none' } }}
-                    >
-                      <CustomTab
-                        label="Search"
-                        selected={tabValue === 0}
-                        component={Link}
-                        to="/search"
-                      />
-                      <CustomTab
-                        label="Favorites"
-                        component={Link}
-                        to="/favorites"
-                        selected={tabValue === 1}
-                      />
-                      <CustomTab
-                        label="Profile"
-                        component={Link}
-                        to="/profile"
-                        selected={tabValue === 2}
-                      />
-                    </Tabs>
-                    <IconButton disableRipple onClick={handleLogout}>
-                      <LogoutIcon fontSize="large" />
-                    </IconButton>
-                  </>
+                  <HeaderTabs
+                    tabValue={tabValue}
+                    handleTabChange={handleTabChange}
+                    handleLogout={handleLogout}
+                  />
                 )
             }
             <SwipeableDrawer
