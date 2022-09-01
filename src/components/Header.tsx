@@ -13,7 +13,7 @@ import ElevationScroll from './helpers/ElevationScroll';
 import { UserContext } from '../context/UserContext';
 
 function Header() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, setAlbums } = useContext(UserContext);
   const [tabValue, setTabValue] = useState(0);
 
   const theme = useTheme();
@@ -46,6 +46,7 @@ function Header() {
     setUser({
       name: '', email: '', description: '', image: '',
     });
+    setAlbums(null);
   };
 
   return (

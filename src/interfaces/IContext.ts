@@ -6,7 +6,7 @@ interface IContext {
   user: User;
   setUser: (newUser: User) => void;
   albums: SearchResults[] | null;
-  setAlbums: (album: SearchResults[]) => void;
+  setAlbums: (album: SearchResults[] | null) => void;
   favorites: Track[];
   setFavorites: (song: Track[]) => void;
 }
