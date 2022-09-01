@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import Track from '../../interfaces/Track';
+
+import { UserContext } from '../../context/UserContext';
 
 interface IProps {
   track: Track;
 }
 
 function AlbumTrack({ track }: IProps) {
-  const { previewUrl, trackName } = track;
+  const { previewUrl, trackName, trackId } = track;
+
+  const { favorites, setFavorites } = useContext(UserContext);
+
+  const isFavorite = favorites.some((song: Track) => song.trackId === trackId);
+
+  const handleClick = () => {
+    const newFavorites = isFavorite
+      ? favorites.filter((song) => song.trackId !== trackId)
+      : [...favorites, track];
+
+    setFavorites(newFavorites);
+  };
 
   return (
     <Grid container>
@@ -26,7 +40,7 @@ function AlbumTrack({ track }: IProps) {
       <Grid item xs={12}>
         <Grid container alignItems="center">
           <Grid item>
-            <audio data-testid="audio-component" src={previewUrl} controls>
+            <audio src={previewUrl} controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
               <code>audio</code>
@@ -34,8 +48,8 @@ function AlbumTrack({ track }: IProps) {
             </audio>
           </Grid>
           <Grid item>
-            <IconButton>
-              <FavoriteIcon />
+            <IconButton onClick={handleClick}>
+              { isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
             </IconButton>
           </Grid>
         </Grid>
