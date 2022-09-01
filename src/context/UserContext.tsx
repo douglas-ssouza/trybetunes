@@ -10,10 +10,14 @@ export const contextInitialValue = {
     image: '',
   },
   albums: null,
+  favorites: [],
   setUser: () => {
     // do nothing
   },
   setAlbums: () => {
+    // do nothing
+  },
+  setFavorites: () => {
     // do nothing
   },
 };

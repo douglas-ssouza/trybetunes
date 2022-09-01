@@ -2,6 +2,10 @@ import React from 'react';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import Track from '../../interfaces/Track';
 
@@ -20,12 +24,21 @@ function AlbumTrack({ track }: IProps) {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <audio data-testid="audio-component" src={previewUrl} controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          <code>audio</code>
-          .
-        </audio>
+        <Grid container alignItems="center">
+          <Grid item>
+            <audio data-testid="audio-component" src={previewUrl} controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              <code>audio</code>
+              .
+            </audio>
+          </Grid>
+          <Grid item>
+            <IconButton>
+              <FavoriteIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
