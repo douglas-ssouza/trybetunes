@@ -2,6 +2,14 @@ import React from 'react';
 
 import IContext from '../interfaces/IContext';
 
+import Track from '../interfaces/Track';
+
+const favorites = localStorage.getItem('favorites');
+let savedFavorites: Track[] = [];
+if (favorites) {
+  savedFavorites = JSON.parse(favorites) as Track[];
+}
+
 export const contextInitialValue = {
   user: {
     name: sessionStorage.getItem('name') || '',
@@ -10,7 +18,7 @@ export const contextInitialValue = {
     image: '',
   },
   albums: null,
-  favorites: [],
+  favorites: savedFavorites,
   setUser: () => {
     // do nothing
   },

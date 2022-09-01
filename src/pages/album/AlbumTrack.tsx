@@ -27,6 +27,7 @@ function AlbumTrack({ track }: IProps) {
       ? favorites.filter((song) => song.trackId !== trackId)
       : [...favorites, track];
 
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
     setFavorites(newFavorites);
   };
 
@@ -49,7 +50,7 @@ function AlbumTrack({ track }: IProps) {
           </Grid>
           <Grid item>
             <IconButton onClick={handleClick}>
-              { isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
+              { isFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon color="primary" /> }
             </IconButton>
           </Grid>
         </Grid>
