@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Grid from '@mui/material/Grid';
 
-import AudioTrack from '../album/AlbumTrack';
+import AlbumTrack from '../album/AlbumTrack';
 
 import { UserContext } from '../../context/UserContext';
 
@@ -13,8 +13,8 @@ function Favorites() {
     <Grid container spacing={2} sx={{ p: 4 }}>
       {
         favorites.map((track) => (
-          <Grid item xs={12} md={6} lg={4}>
-            <AudioTrack key={track.trackId} track={track} />
+          <Grid key={track.trackId} item xs={12} md={6} xl={4}>
+            <AlbumTrack key={track.trackId} track={track} />
           </Grid>
         ))
       }

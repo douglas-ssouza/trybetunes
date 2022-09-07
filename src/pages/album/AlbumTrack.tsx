@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
 
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -16,7 +20,9 @@ interface IProps {
 }
 
 function AlbumTrack({ track }: IProps) {
-  const { previewUrl, trackName, trackId } = track;
+  const {
+    previewUrl, trackName, trackId, artworkUrl100, collectionName,
+  } = track;
 
   const { favorites, setFavorites } = useContext(UserContext);
 
@@ -32,30 +38,38 @@ function AlbumTrack({ track }: IProps) {
   };
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Typography component="h5" variant="h6">
-          {trackName}
-        </Typography>
-      </Grid>
-      <Grid item>
-        <Grid container alignItems="center">
-          <Grid item xs={10}>
+    <Card>
+      <Grid
+        container
+        alignItems="center"
+      >
+        <Grid item>
+          <CardMedia>
+            <img src={artworkUrl100} alt={`${collectionName} cover`} />
+          </CardMedia>
+        </Grid>
+        <Grid item>
+          <CardContent>
+            <Typography component="h5" variant="h6">
+              {trackName}
+            </Typography>
             <audio src={previewUrl} controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
               <code>audio</code>
               .
             </audio>
-          </Grid>
-          <Grid item>
+          </CardContent>
+        </Grid>
+        <Grid item>
+          <CardActions>
             <IconButton onClick={handleClick} sx={{ ml: 1 }} size="large">
               { isFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon color="primary" /> }
             </IconButton>
-          </Grid>
+          </CardActions>
         </Grid>
       </Grid>
-    </Grid>
+    </Card>
   );
 }
 
