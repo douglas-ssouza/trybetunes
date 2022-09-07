@@ -2,11 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import HeaderTabs from './HeaderTabs';
+import HeaderDrawer from './HeaderDrawer';
 
 import ElevationScroll from './helpers/ElevationScroll';
 
@@ -17,6 +19,7 @@ function Header() {
   const [tabValue, setTabValue] = useState(0);
 
   const theme = useTheme();
+  const matchesMDDown = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
     const { pathname } = window.location;
@@ -52,16 +55,26 @@ function Header() {
   return (
     <>
       <ElevationScroll>
-        <AppBar>
+        <AppBar
+          sx={{
+            [theme.breakpoints.down('md')]: {
+              zIndex: theme.zIndex.modal + 1,
+            },
+          }}
+        >
           <Toolbar>
             <Typography component="h2" variant="h4" color={theme.palette.common.white}>
               {user.name}
             </Typography>
-            <HeaderTabs
-              tabValue={tabValue}
-              handleTabChange={handleTabChange}
-              handleLogout={handleLogout}
-            />
+            {
+              matchesMDDown ? <HeaderDrawer /> : (
+                <HeaderTabs
+                  tabValue={tabValue}
+                  handleTabChange={handleTabChange}
+                  handleLogout={handleLogout}
+                />
+              )
+            }
           </Toolbar>
         </AppBar>
       </ElevationScroll>
