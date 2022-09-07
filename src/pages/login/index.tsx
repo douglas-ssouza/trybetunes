@@ -19,7 +19,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    sessionStorage.setItem('name', name);
+    localStorage.setItem('user', JSON.stringify({ name }));
     setUser({ ...user, name });
     navigate('/search');
   };

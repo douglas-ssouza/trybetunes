@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -17,6 +18,8 @@ function EditProfile() {
     name, email, description, image,
   } = user;
 
+  const navigate = useNavigate();
+
   const [state, setState] = useState<User>(() => ({
     name,
     email,
@@ -29,6 +32,15 @@ function EditProfile() {
       ...prevState,
       [target.name]: target.value,
     }));
+  };
+
+  const handleClick = () => {
+    localStorage.setItem('name', state.name);
+    localStorage.setItem('email', state.email);
+    localStorage.setItem('description', state.description);
+    localStorage.setItem('image', state.image);
+    setUser(state);
+    navigate('/profile');
   };
 
   return (
@@ -60,13 +72,15 @@ function EditProfile() {
           value={state.email}
         />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <TextField
           placeholder="Digite sua descrição "
           onChange={handleChange}
           name="description"
           value={state.description}
-          rows={5}
+          multiline
+          maxRows={5}
+          fullWidth
         />
       </Grid>
       <Grid item>
@@ -80,6 +94,7 @@ function EditProfile() {
       <Grid item>
         <Button
           variant="contained"
+          onClick={handleClick}
         >
           Salvar
         </Button>
