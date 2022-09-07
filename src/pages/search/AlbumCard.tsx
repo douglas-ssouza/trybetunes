@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 import SearchResults from '../../interfaces/SearchResults';
@@ -14,10 +15,10 @@ function AlbumCard(props: SearchResults) {
   } = props;
 
   const album = collectionName.length <= 30
-    ? collectionName : `${collectionName.slice(0, 29)}...`;
+    ? collectionName : `${collectionName.slice(0, 25)}...`;
 
   const artist = artistName.length <= 30
-    ? artistName : `${artistName.slice(0, 29)}...`;
+    ? artistName : `${artistName.slice(0, 25)}...`;
 
   return (
     <Grid
@@ -30,7 +31,7 @@ function AlbumCard(props: SearchResults) {
       to={`/album/${collectionId}`}
       sx={{ textDecoration: 'none' }}
     >
-      <Paper elevation={6} sx={{ p: 3 }}>
+      <Card elevation={6} sx={{ p: 3 }}>
         <Grid
           container
           direction="column"
@@ -39,17 +40,19 @@ function AlbumCard(props: SearchResults) {
           spacing={2}
         >
           <Grid item alignSelf="center">
-            <Box>
+            <CardMedia>
               <img src={artworkUrl100} alt={`${collectionName} cover`} width="100px" />
-            </Box>
+            </CardMedia>
           </Grid>
           <Grid item>
-            <Typography component="h4" variant="h6">{album}</Typography>
-            <Typography component="h5" variant="subtitle1">{artist}</Typography>
-            <Typography component="p" variant="body2">{collectionPrice}</Typography>
+            <CardContent>
+              <Typography component="h4" variant="h6">{album}</Typography>
+              <Typography component="h5" variant="subtitle1">{artist}</Typography>
+              <Typography component="p" variant="body2">{collectionPrice}</Typography>
+            </CardContent>
           </Grid>
         </Grid>
-      </Paper>
+      </Card>
     </Grid>
   );
 }
