@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useTheme } from '@mui/material/styles';
 
@@ -13,10 +14,21 @@ import Toolbar from '@mui/material/Toolbar';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 
-function HeaderDrawer() {
+interface IProps {
+  value: number;
+  setValue: (value: number) => void;
+  handleLogout: () => void;
+}
+
+function HeaderDrawer({ value, setValue, handleLogout }: IProps) {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const theme = useTheme();
+
+  const handleItemClick = (newValue: number) => {
+    setDrawerOpen(false);
+    setValue(newValue);
+  };
 
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -32,16 +44,34 @@ function HeaderDrawer() {
       >
         <Toolbar />
         <List>
-          <ListItem>
+          <ListItem
+            component={Link}
+            to="/search"
+            button
+            selected={value === 0}
+            onClick={() => handleItemClick(0)}
+          >
             <ListItemText>Search</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem
+            component={Link}
+            to="/favorites"
+            button
+            selected={value === 1}
+            onClick={() => handleItemClick(1)}
+          >
             <ListItemText>Favorites</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem
+            component={Link}
+            to="/profile"
+            button
+            selected={value === 2}
+            onClick={() => handleItemClick(2)}
+          >
             <ListItemText>Profile</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem onClick={handleLogout}>
             <ListItemText>Sair</ListItemText>
             <ListItemIcon>
               <LogoutIcon sx={{ marginLeft: 'auto' }} />

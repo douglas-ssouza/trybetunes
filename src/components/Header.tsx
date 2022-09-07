@@ -67,13 +67,21 @@ function Header() {
               {user.name}
             </Typography>
             {
-              matchesMDDown ? <HeaderDrawer /> : (
-                <HeaderTabs
-                  tabValue={tabValue}
-                  handleTabChange={handleTabChange}
-                  handleLogout={handleLogout}
-                />
-              )
+              matchesMDDown
+                ? (
+                  <HeaderDrawer
+                    value={tabValue}
+                    setValue={setTabValue}
+                    handleLogout={handleLogout}
+                  />
+                )
+                : (
+                  <HeaderTabs
+                    tabValue={tabValue}
+                    handleTabChange={handleTabChange}
+                    handleLogout={handleLogout}
+                  />
+                )
             }
           </Toolbar>
         </AppBar>
