@@ -38,9 +38,9 @@ function AlbumTrack({ track }: IProps) {
           {trackName}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <Grid container alignItems="center">
-          <Grid item>
+          <Grid item xs={10}>
             <audio src={previewUrl} controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
@@ -49,7 +49,7 @@ function AlbumTrack({ track }: IProps) {
             </audio>
           </Grid>
           <Grid item>
-            <IconButton onClick={handleClick}>
+            <IconButton onClick={handleClick} sx={{ ml: 1 }} size="large">
               { isFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon color="primary" /> }
             </IconButton>
           </Grid>
