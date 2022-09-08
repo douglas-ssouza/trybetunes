@@ -32,6 +32,12 @@ function HeaderDrawer({ value, setValue, handleLogout }: IProps) {
 
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
+  const listItems = [
+    { name: 'Search', link: '/search', value: 0 },
+    { name: 'Favorites', link: '/favorites', value: 1 },
+    { name: 'Profile', link: '/profile', value: 2 },
+  ];
+
   return (
     <>
       <SwipeableDrawer
@@ -44,33 +50,20 @@ function HeaderDrawer({ value, setValue, handleLogout }: IProps) {
       >
         <Toolbar />
         <List>
-          <ListItem
-            component={Link}
-            to="/search"
-            button
-            selected={value === 0}
-            onClick={() => handleItemClick(0)}
-          >
-            <ListItemText>Search</ListItemText>
-          </ListItem>
-          <ListItem
-            component={Link}
-            to="/favorites"
-            button
-            selected={value === 1}
-            onClick={() => handleItemClick(1)}
-          >
-            <ListItemText>Favorites</ListItemText>
-          </ListItem>
-          <ListItem
-            component={Link}
-            to="/profile"
-            button
-            selected={value === 2}
-            onClick={() => handleItemClick(2)}
-          >
-            <ListItemText>Profile</ListItemText>
-          </ListItem>
+          {
+            listItems.map((item) => (
+              <ListItem
+                key={`${item.name}-${item.value}`}
+                component={Link}
+                to={item.link}
+                button
+                selected={value === item.value}
+                onClick={() => handleItemClick(item.value)}
+              >
+                <ListItemText>{item.name}</ListItemText>
+              </ListItem>
+            ))
+          }
           <ListItem onClick={handleLogout}>
             <ListItemText>Sair</ListItemText>
             <ListItemIcon>
